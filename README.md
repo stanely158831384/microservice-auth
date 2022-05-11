@@ -7,6 +7,7 @@
 ## And This project and the technology will be applied to our seneca forum project later.
 ## Component:
 - Authentication: login, logout, registration, userInfo
+- Client: status, nav panels
 - Pending
 
 ## Key technology and package:
@@ -19,8 +20,9 @@
 
 ## Project prerequsite
 1. docker desktop and enable kubernetes
-2. npm install skaffold
-2. kubectl create secret eneric jwt-secret --from-literal=jwt=asdf
+2. Kubectl install ingress-nginx
+3. npm install skaffold
+4. kubectl create secret eneric jwt-secret --from-literal=jwt=asdf
 
 ## Start project
 1. terminal: skaffold dev
