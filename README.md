@@ -7,6 +7,7 @@
 ## And This project and the technology will be applied to our seneca forum project later.
 ## Component:
 - Authentication: login, logout, registration, userInfo
+- Client: status, nav panels
 - Pending
 
 ## Key technology and package:
