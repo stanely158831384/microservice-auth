@@ -37,7 +37,7 @@ async (req: Request, res: Response) =>{
         price: req.body.price
     })
 
-    await ticket.save();
+    await ticket.save(); 
 
     res.send(ticket);
 })
