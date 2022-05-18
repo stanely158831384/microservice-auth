@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken';
 declare global {
     var signin:()=>string[];
   }
+jest.mock('../nats-wrapper');
 
 let mongo:any;
 beforeAll(async() =>{
@@ -18,6 +19,7 @@ beforeAll(async() =>{
 })
 
 beforeEach(async ()=>{
+    jest.clearAllMocks();
     const collections = await mongoose.connection.db.collections();
     for (let collection of collections){
         await collection.deleteMany({});
@@ -25,8 +27,10 @@ beforeEach(async ()=>{
 
 })
 afterAll(async () =>{
-    await mongo.stop();
     await mongoose.connection.close();
+  if (mongo) {
+    await mongo.stop();
+  }
 })
 
 global.signin = () =>{
