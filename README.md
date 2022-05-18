@@ -8,6 +8,8 @@
 ## Component:
 - Authentication: login, logout, registration, userInfo
 - Client: status, nav panels
+- NATS-steaming(event bus)
+- Interface
 - Pending
 
 ## Key technology and package:
