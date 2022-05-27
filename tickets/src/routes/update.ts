@@ -4,7 +4,8 @@ import {
     validateRequest,
     NotFoundError,
     requireAuth,
-    NotAuthorizedError
+    NotAuthorizedError,
+    BadRequestError
 } from '@racoonrepublic/common'
 
 import {Ticket} from '../models/tickets'
@@ -28,6 +29,10 @@ async (req: Request, res: Response) =>{
 
     if(!ticket){
         throw new NotFoundError();
+    }
+
+    if(ticket.orderId){
+        throw new BadRequestError('Cannot edit a reserved ticket');
     }
 
     if(ticket.userId !== req.currentUser!.id){
