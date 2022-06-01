@@ -1,19 +1,25 @@
 import mongoose from "mongoose";
 import { Password } from '../services/password'
 
+
+//Describe the properties that required to create a new user
 interface UserAttrs{
     email: string,
     password: string
 }
 
+//collection
 interface UserModel extends mongoose.Model<UserDoc>{
     build(attrs: UserAttrs): UserDoc;
 }
 
+//single documents
 interface UserDoc extends mongoose.Document{
     email: string;
     password: string;
 }
+
+  
 const userSchema = new mongoose.Schema({
     email:{
         type: String,

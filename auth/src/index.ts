@@ -1,37 +1,5 @@
-import express from 'express';
-import 'express-async-errors';
-   import {json} from 'body-parser';
 import mongoose from 'mongoose';
-import cookieSession from 'cookie-session';
-
-import { currentUserRouter } from './routes/current-user';
-import { signinRouter } from './routes/signin';
-import { signoutRouter } from './routes/signout';
-import { signupRouter } from './routes/signup';
-import { errorHandler } from './middlewares/error-handlers';
-import { NotFoundError } from './errors/not-found-error';
-
-const app = express();
-//this command is about the cookie-session
-app.set('trust proxy', true);
-app.use(json());
-app.use(
-  cookieSession({
-    signed: false,
-    secure: true
-  })
-)
-
-app.use(currentUserRouter);
-app.use(signinRouter);
-app.use(signoutRouter);
-app.use(signupRouter);
-
-app.all('*',async()=>{
-  throw new NotFoundError();
-})
-
-app.use(errorHandler);
+import {app} from './app'
 
 const start = async () =>{
 
@@ -39,8 +7,12 @@ const start = async () =>{
     throw new Error('JWT_KEY must be defined');
   }
 
+  if(!process.env.MONGO_URI){
+    throw new Error('MONGO_URI must be defined');
+  }
   try{
-    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+ 
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected to MongoDb');
   }catch(err){
     console.error(err);
