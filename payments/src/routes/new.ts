@@ -24,7 +24,7 @@ async (req: Request, res: Response)=>{
     const { token, orderId } = req.body;
 
     const order = await Order.findById(orderId);
-
+    console.log();
     if(!order){
         throw new NotFoundError();
     }
