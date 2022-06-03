@@ -5,7 +5,7 @@ const custom_build = ({req}) =>{
         return axios.create({
             // baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
             // dev mode
-            baseURL: 'http://senecacollege.org/',
+            baseURL: 'http://racoonrepublic.xyz/',
             headers: req.headers
         });
     } else {
