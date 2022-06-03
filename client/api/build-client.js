@@ -3,7 +3,9 @@ import axios from 'axios';
 const custom_build = ({req}) =>{
     if(typeof window === 'undefined'){
         return axios.create({
-            baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+            // baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+            // dev mode
+            baseURL: 'http://senecacollege.org/',
             headers: req.headers
         });
     } else {
