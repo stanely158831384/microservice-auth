@@ -5,7 +5,7 @@ const custom_build = ({req}) =>{
 
         var baseURL = 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local';
 
-        if(process.env.NODE_ENV !== 'development'){
+        if(process.env.NODE_ENV != 'development'){
             baseURL = 'http://www.racoonrepublic.xyz/';
         }
 
