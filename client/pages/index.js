@@ -2,6 +2,7 @@ import buildClient from "../api/build-client"
 import Link from 'next/link';
 
 const LandingPage = ({currentUser, tickets}) => {
+    console.log('mode: ',process.env.NODE_ENV);
     const ticketList = tickets.map(ticket =>{
         return (
             <tr key={ticket.id}>
@@ -10,7 +11,7 @@ const LandingPage = ({currentUser, tickets}) => {
                 <td>{ticket.orderId}</td>
                 <td>
                     <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`}>
-                        <a>View</a>
+                        <a>View1</a>
                     </Link>
                 </td>
             </tr>
