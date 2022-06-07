@@ -3,6 +3,7 @@ import buildClient from '../api/build-client';
 import Header from '../component/header'
 
 const AppComponent = ({Component, pageProps, currentUser}) => {
+    console.log('mode: ',process.env.NODE_ENV);
     return (
     <div>
         <Header currentUser={currentUser}/>
