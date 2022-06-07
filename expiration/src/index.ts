@@ -4,6 +4,7 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 const start = async () =>{
 
   console.log('Starting....');
+  console.log('mode: ',process.env.NODE_ENV);
   if(!process.env.NATS_CLIENT_ID){
     throw new Error('MONGO_URI must be defined');
   }
