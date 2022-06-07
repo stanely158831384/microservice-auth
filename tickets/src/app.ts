@@ -9,6 +9,8 @@ import { indexTicketRouter } from './routes/index';
 import { updateTicketRouter } from './routes/update';
 
 const app = express();
+let secure: boolean = process.env.NODE_ENV === 'development';
+
 //this command is about the cookie-session
 app.set('trust proxy', true);
 app.use(json());
@@ -16,8 +18,7 @@ app.use(
   cookieSession({
     signed: false, 
     // secure: process.env.NODE_ENV !== 'test'
-    
-    secure: false,
+    secure,
   })
 )
 app.use(currentUser);
