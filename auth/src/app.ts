@@ -18,7 +18,6 @@ app.use(
   cookieSession({
     signed: false,
     secure,
-    // secure: false,
   })
 )
 
