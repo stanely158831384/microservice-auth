@@ -6,7 +6,7 @@ import { Ticket } from '../../models/ticket'
 import { natsWrapper} from '../../nats-wrapper'
 
 it('returns an error if the ticket does not exist',async () => {
-    const ticketId = new mongoose.Types.ObjectId();
+    const ticketId = new mongoose.Types.ObjectId().toHexString();
 
     await request(app)
         .post('/api/orders')

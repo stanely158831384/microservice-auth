@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/api/comments',async(req: Request, res: Response)=>{
     const comment = await Comment.find({
-        orderId: undefined,
+        postId: undefined,
     })
 
     res.send(comment);

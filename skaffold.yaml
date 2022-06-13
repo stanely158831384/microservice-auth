@@ -57,5 +57,13 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: stanley158831384/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
 
     

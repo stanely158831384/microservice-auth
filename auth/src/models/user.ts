@@ -3,17 +3,18 @@ import { Password } from '../services/password'
 
 
 //Describe the properties that required to create a new user
+//input
 interface UserAttrs{
     email: string,
     password: string
 }
 
-//collection
+//functions
 interface UserModel extends mongoose.Model<UserDoc>{
     build(attrs: UserAttrs): UserDoc;
 }
 
-//single documents
+//single documents//output
 interface UserDoc extends mongoose.Document{
     email: string;
     password: string;
