@@ -10,6 +10,7 @@ export class CommentsCreatedListener extends Listener<CommentCreatedEvent>{
     async onMessage(data: CommentCreatedEvent['data'], msg: Message){
         const {id,userId,comment,username,postId,date} = data;
         const commentItem = Comment.build({
+            id,
             userId,
             comment,
             username,
@@ -17,7 +18,7 @@ export class CommentsCreatedListener extends Listener<CommentCreatedEvent>{
             date,
         });
 
-        commentItem.save();
+        await commentItem.save();
 
         msg.ack();
     }

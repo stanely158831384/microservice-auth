@@ -8,7 +8,6 @@ it('has a route handler listenning to /api/comments for post request', async ()=
     const response = await request(app)
         .post('/api/comments')
         .send({});
-    console.log(response.body);
     expect(response.status).not.toEqual(404);
 })
 
@@ -56,13 +55,28 @@ it('returns an error if an invalid postId is provided', async()=>{
         })
         .expect(400);
 
-        await request(app)
+    await request(app)
             .post('/api/comments')
             .set('Cookie',global.signin())
             .send({
                 comment: 'fasdfsd',
             })
             .expect(400);
+
+    const comment = await request(app)
+            .post('/api/comments')
+            .set('Cookie',global.signin())
+            .send({
+                comment: 'fasdfsd',
+                postId: "1234"
+            })
+            .expect(201);
+
+    console.log(comment.body);
+
+    const sum = await request(app).get('/api/comments').send().expect(200);
+
+    console.log(sum.body);
 })
 
 it('creates a comment with valid inputs', async ()=>{

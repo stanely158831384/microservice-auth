@@ -18,7 +18,8 @@ const TicketShow = ({ticket}) => {
     </div>;
 };
 
-TicketShow.getInitialProps = async (context, client) => {
+TicketShow.getInitialProps = async (context, client, currentUser) => {
+    console.log("here is the ticketid currentusr"+currentUser);
     const {ticketId} = context.query;
     const { data } = await client.get(`/api/tickets/${ticketId}`);
 

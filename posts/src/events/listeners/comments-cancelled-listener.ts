@@ -13,8 +13,8 @@ export class CommentCancelledListener extends Listener<CommentCancelledEvent>{
         if(!comment){
             throw new Error('Comment not found') 
         }
-
-        comment.set({postId: undefined});
+        debugger
+        comment.set({postId:"delete"});
         await comment.save();
 
         await Comment.deleteOne({_id:data.id});

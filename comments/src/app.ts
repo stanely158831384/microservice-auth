@@ -9,15 +9,14 @@ import { deleteCommentRouter }from './routes/delete';
 import { showCommentRouter } from './routes/show';
 
 const app = express();
-let secure: boolean = process.env.NODE_ENV === 'development';
 
 app.set('trust proxy', true);
 app.use(json());
 app.use(
     cookieSession({
         signed: false,
-        secure,
-    })
+        secure: process.env.NODE_ENV !== 'test',
+      })
 )
 
 app.use(currentUser);

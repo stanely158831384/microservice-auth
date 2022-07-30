@@ -1,6 +1,8 @@
 import { app } from "./app";
 import { natsWrapper } from "./nats-wrapper";
 import mongoose from "mongoose";
+import { CommentCancelledListener } from "./events/listeners/comments-cancelled-listener";
+import { CommentsCreatedListener } from "./events/listeners/comments-created-listener";
 
 
 const start = async ()=>{
@@ -35,6 +37,10 @@ const start = async ()=>{
         })
         process.on('SIGINT',()=>natsWrapper.client.close());
         process.on('SIGTERM', ()=> natsWrapper.client.close());
+
+        new CommentCancelledListener(natsWrapper.client).listen();
+        new CommentsCreatedListener(natsWrapper.client).listen();
+
         await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected to MongoDb');
     }catch(err){

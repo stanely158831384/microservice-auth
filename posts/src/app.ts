@@ -3,21 +3,27 @@ import 'express-async-errors';
 import {json} from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError, currentUser } from '@racoonrepublic/common';
-
+import { deletePostRouter } from './routes/delete';
+import { indexPostRouter } from './routes/index';
+import { newPostRouter } from './routes/new';
+import { showPostRouter } from './routes/show';
 
 const app = express();
-let secure: boolean = process.env.NODE_ENV === 'development';
-
 app.set('trust proxy', true);
 app.use(json());
 app.use(
     cookieSession({
         signed: false,
-        secure,
+        secure: process.env.NODE_ENV !== 'test',
     })
 )
 
 app.use(currentUser);
+
+app.use(deletePostRouter);
+app.use(indexPostRouter);
+app.use(newPostRouter);
+app.use(showPostRouter);
 
 app.all('*',async()=>{
     throw new NotFoundError();

@@ -38,7 +38,7 @@ const commentSchema = new mongoose.Schema({
         required: true,
     },
     date:{
-        type: Date,
+        type: mongoose.Schema.Types.Date,
         required: true,
     }
 },{

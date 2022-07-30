@@ -6,16 +6,14 @@ import { errorHandler , NotFoundError,currentUser} from '@racoonrepublic/common'
 import { createChargeRouter } from './routes/new';
 
 const app = express();
-let secure: boolean = process.env.NODE_ENV === 'development';
-
 //this command is about the cookie-session
 app.set('trust proxy', true);
 app.use(json());
 app.use(
   cookieSession({
     signed: false, 
-    // secure: process.env.NODE_ENV !== 'test'
-    secure,
+    secure: process.env.NODE_ENV !== 'test',
+    // secure:false,
   })
 )
 app.use(currentUser);

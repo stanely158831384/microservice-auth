@@ -1,6 +1,7 @@
 import { app } from "./app";
 import { natsWrapper } from "./nats-wrapper";
 import mongoose from "mongoose";
+import { PostCancelledListener } from "./events/listeners/post-cancelled-listener";
 
 
 const start = async ()=>{
@@ -35,8 +36,10 @@ const start = async ()=>{
         })
         process.on('SIGINT',()=>natsWrapper.client.close());
         process.on('SIGTERM', ()=> natsWrapper.client.close());
+
+        new PostCancelledListener(natsWrapper.client).listen();
         await mongoose.connect(process.env.MONGO_URI);
-    console.log('Connected to MongoDb');
+        console.log('Connected to MongoDb');
     }catch(err){
         console.error(err);
     }

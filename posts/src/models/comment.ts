@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 interface CommentAttrs{
+    id: string;
     userId: string;
     comment: string;
     username: string;
@@ -51,7 +52,14 @@ const commentSchema = new mongoose.Schema({
 })
 
 commentSchema.statics.build = (attrs: CommentAttrs) => {
-    return new Comment(attrs);
+    return new Comment({
+        _id: attrs.id,
+        userId: attrs.userId,
+        comment: attrs.comment,
+        username: attrs.username,
+        postId: attrs.postId,
+        date: new Date(),
+    });
 }
 
 const Comment = mongoose.model<CommentDoc,CommentModel>('Comments',commentSchema);

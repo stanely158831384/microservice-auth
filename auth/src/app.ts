@@ -10,14 +10,13 @@ import { signupRouter } from './routes/signup';
 import { errorHandler , NotFoundError} from '@racoonrepublic/common';
 
 const app = express();
-let secure: boolean = process.env.NODE_ENV === 'development';
 //this command is about the cookie-session
 app.set('trust proxy', true);
 app.use(json());
 app.use(
   cookieSession({
     signed: false,
-    secure,
+    secure: process.env.NODE_ENV !== 'test',
   })
 )
 

@@ -65,5 +65,13 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: stanley158831384/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
 
     
