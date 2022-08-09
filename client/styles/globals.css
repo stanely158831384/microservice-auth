@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: white) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+@media screen(lg) {
+  .bg-hero-r {
+    width: 2000px;
+    height: 300px;
+    left: 30%;
+    @apply absolute rounded-l-full top-52 bg-racoonBlueA;
+  }
+
+  .bg-hero-l {
+    width: 2000px;
+    height: 300px;
+    right: 70%;
+    @apply absolute rounded-r-full top-52 bg-racoonBlueA;
+  }
+
+}
+
+/* .bgWrap {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+  } */

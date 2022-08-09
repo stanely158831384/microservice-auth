@@ -1,52 +1,90 @@
-import buildClient from "../api/build-client"
-import Link from 'next/link';
+import Head from 'next/head'
+import Image from 'next/image'
+import '../styles/Home.module.css'
+import mainPicture from '../public/eastwood-delivery.png'
+import seconderyPicture from '../public/web-animation.gif'
+import TabsRender from '../components/test/tabs'
+import Accordin from '../components/test/accordin'
+import Faq from '../components/test/faq'
+import Footer from '../components/test/footer'
 
-const LandingPage = ({currentUser, tickets}) => {
-    console.log('mode: ',process.env.NODE_ENV);
-    const ticketList = tickets.map(ticket =>{
-        return (
-            <tr key={ticket.id}>
-                <td>{ticket.title}</td>
-                <td>{ticket.price}</td>
-                <td>{ticket.orderId}</td>
-                <td>
-                    <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`}>
-                        <a>View1</a>
-                    </Link>
-                </td>
-            </tr>
-        )
-    })
-    return (
-        <div>
-            <h2>tickets</h2>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>Link</th>
-                        <th>orderId</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {ticketList}
-                </tbody>
-            </table>
+export default function Home() {
+  const handleClick = (e) => {
+
+  }
+  return (
+    <div>
+      <section id="hero">
+        {/* container for the image and text, or we call say the container for this section */}
+        <div className="container flex flex-col-reverse mx-auto p-6 lg:flex-row lg:mb-0" >
+
+          {/* text and buttons of linkage : explaination of your business */}
+          <div className="flex flex-col space-y-10 lg:mt-16 lg:w-1/2">
+
+            <h1 className="text-3xl font-cyberFonts text-center lg:text-6xl lg:text-left hover:scale-125">A Scarborough Based Startup</h1>
+
+            <p className="max-w-md mx-0 text-lg text-center text-gray-400 lg:text-2xl lg:text-left lg:mt-0 lg:mx=0">
+              RacoonRepublic is a Scarborough based Startup. Our business includes the website development,
+              Security camera installation, and Student forum operation. Since 2020, the company has been
+              grown from a tiny single and focused studio to a multi-businesses capability tiny studio.
+            </p>
+
+            {/* Buttons container */}
+            <div className="flex items-center justify-center w-full space-x-4 lg:justify-start">
+              <a
+                href="#"
+                className="p-4 text-sm font-semibold text-white bg-softBlue rounded shadow-2xl border-2 border-softBlue mt:text-base hover:bg-white hover:text-sofBlue"
+              >Seneca Forum</a>
+
+              <a
+                href="#"
+                className="p-4 text-sm font-semibold text-black bg-gray-300 rounded shadow-2xl border-2 border-gray-300 mt:text-base hover:bg-white hover:text-sofBlue"
+              >Home Security</a>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div className="relative mx-auto lg:mx-0 lg:mb-0 lg:w-1/2">
+            <div className="bg-hero-r"></div>
+            <Image src={seconderyPicture} alt="main" id="mainPageId" className="absolute top-0 left-0" />
+            {/* <Image src={mainPicture} alt="main" id="secondaryPageId" className="absolute bottom-0 right-0 scale-50"/> */}
+          </div>
+
         </div>
-    );
-};
+      </section>
 
-LandingPage.getInitialProps = async (context, client, currentUser) => {
-    // console.log('Landing page');
-    // const client = buildClient(context);
-    // const {data} = await client.get('/api/users/currentuser');
-    // console.log(data);
-    // return data;
+      <section id="features">
+        <div className="container mx-auto mt-16 px-6">
+          <h2 className="mb-6 text-4xl font-cyberFonts text-center">Features</h2>
+          <p className="max-w-md mx-auto text-center text-grayishBlue">
+            Our goal is to create a platform that can connect all canadian students and entrepreneurs together, and based on this platform we
+            are going to expand our business to other fields like eduation and e-commerce.
+          </p>
+        </div>
+      </section>
 
-    const { data} = await client.get('/api/tickets');
+      <section id="tabs">
+        <TabsRender />
+      </section>
 
-    return { tickets: data};
+      <section id="faq">
+        <Faq></Faq>
+      </section>
+
+      <section id="accordin">
+        <Accordin />
+      </section>
+
+
+      <section id="footer">
+        <Footer />
+      </section>
+
+
+
+    </div>
+
+
+
+  )
 }
-
-export default LandingPage;
