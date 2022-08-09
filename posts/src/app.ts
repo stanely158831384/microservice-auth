@@ -1,6 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
-import {json} from 'body-parser';
+import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError, currentUser } from '@racoonrepublic/common';
 import { deletePostRouter } from './routes/delete';
@@ -14,7 +14,9 @@ app.use(json());
 app.use(
     cookieSession({
         signed: false,
-        secure: process.env.NODE_ENV !== 'test',
+        // secure: process.env.NODE_ENV !== 'test',
+        secure: false,
+
     })
 )
 
@@ -25,10 +27,10 @@ app.use(indexPostRouter);
 app.use(newPostRouter);
 app.use(showPostRouter);
 
-app.all('*',async()=>{
+app.all('*', async () => {
     throw new NotFoundError();
 })
 
 app.use(errorHandler);
 
-export{ app }
+export { app }
