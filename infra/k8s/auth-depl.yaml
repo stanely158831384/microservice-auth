@@ -15,7 +15,6 @@ spec:
       containers:
         - name: auth
           image: stanley158831384/auth
-          imagePullPolicy: Never
           env:
             - name: MONGO_URI
               value: 'mongodb://auth-mongo-srv:27017/auth'
@@ -25,7 +24,6 @@ spec:
                   name: jwt-secret
                   key: JWT_KEY          
 ---
-
 
 apiVersion: v1
 kind: Service
