@@ -9,7 +9,7 @@ metadata:
 
 spec:
   rules:
-    - host: www.racoonrepublic.xyz
+    - host: www.racoonrepublic.ca
       http:
         paths:
           - path: /api/users/?(.*)
@@ -69,7 +69,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
-    service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.racoonrepublic.xyz'
+    service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.racoonrepublic.ca'
   labels:
     helm.sh/chart: ingress-nginx-2.0.3
     app.kubernetes.io/name: ingress-nginx
