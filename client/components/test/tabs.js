@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import WebsiteTab from "../../public/website-design-tab.gif";
-import SecurityTab from "../../public/security-tab.svg";
-import ForumTab from "../../public/forum-tab.gif";
+import SmartCamera from "../../public/forum-tab.gif";
+import SenecaCollege from "../../public/Seneca_College-Logo.wine.svg"
 const Tabs = ({ color }) => {
   const [openTab, setOpenTab] = React.useState(1);
   return (
@@ -31,7 +31,7 @@ const Tabs = ({ color }) => {
                   href="#link1"
                   role="tablist"
                 >
-                  Profile
+                  Website design
                 </a>
               </li>
               <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -50,7 +50,7 @@ const Tabs = ({ color }) => {
                   href="#link2"
                   role="tablist"
                 >
-                  Settings
+                  Smart camera
                 </a>
               </li>
               <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -69,7 +69,7 @@ const Tabs = ({ color }) => {
                   href="#link3"
                   role="tablist"
                 >
-                  Options
+                  Seneca Forum
                 </a>
               </li>
             </ul>
@@ -83,19 +83,18 @@ const Tabs = ({ color }) => {
 
                     <div className="flex flex-col space-y-8 md:w-1/2">
                       <h3
-                        className="mt-32 text-3xl font-semibold text-center md:mt-0 md:text-left"
+                        className="mt-32 text-3xl font-semibold text-center md:mt-0 md:text-left font-cyberFonts"
                       >
-                        Bookmark in one click
+                        Website design
                       </h3>
                       <p className="max-w-md text-center text-grayishBlue md:text-left">
-                        Organize your bookmarks however you like. Our simple
-                        drag-and-drop interface gives you complete control over how you
-                        manage your favourite sites.
+                        Our website development service can provide the tiny and medium level website development solutions for our business partners.
+
                       </p>
                       <div className="mx-auto md:mx-0">
                         <a
                           href="#"
-                          className="px-6 py-3 mt-4 font-semibold text-white border-2 border-white rounded-lg md:inline-flex bg-softBlue hover:bg-white hover:text-softBlue hover:border-softBlue hover:border-2"
+                          className="px-6 py-3 mt-4 font-semibold text-white border-2 border-white rounded-lg md:inline-flex bg-softBlue hover:bg-white hover:text-softBlue hover:border-softBlue hover:border-2 font-cyberFonts"
                         >More Info</a
                         >
                       </div>
@@ -103,19 +102,17 @@ const Tabs = ({ color }) => {
                   </div>
                   <div className={(openTab === 2 ? "block" : "hidden") + " flex sm:flex-row flex-col"} id="link2">
                     <div className=" flex justify-center md:w-1/2">
-                      <Image src={SecurityTab} alt="dsfg" className="absolute z-10" />
+                      <Image src={SmartCamera} alt="dsfg" className="absolute z-10" />
                     </div>
 
                     <div className="flex flex-col space-y-8 md:w-1/2">
                       <h3
-                        className="mt-32 text-3xl font-semibold text-center md:mt-0 md:text-left"
+                        className="mt-32 text-3xl font-semibold text-center md:mt-0 md:text-left font-cyberFonts"
                       >
-                        Bookmark in one click
+                        Security Smart Camera
                       </h3>
                       <p className="max-w-md text-center text-grayishBlue md:text-left">
-                        Organize your bookmarks however you like. Our simple
-                        drag-and-drop interface gives you complete control over how you
-                        manage your favourite sites.
+                        Our smart camera business focuses on the small toronto household, and focuses on the easy installation.
                       </p>
                       <div className="mx-auto md:mx-0">
                         <a
@@ -127,26 +124,24 @@ const Tabs = ({ color }) => {
                   </div>
                   <div className={(openTab === 3 ? "block" : "hidden") + " flex sm:flex-row flex-col"} id="link3">
                     <div className="flex justify-center md:w-1/2">
-                      <Image src={ForumTab} alt="" className='absolute z-10' />
+                      <Image src={SenecaCollege} alt="" className='absolute z-10' />
                     </div>
 
                     <div className="flex flex-col space-y-8 md:w-1/2">
                       <h3
                         className="mt-32 text-3xl font-semibold text-center md:mt-0 md:text-left"
                       >
-                        Bookmark in one click
+                        Seneca Forum
                       </h3>
                       <p className="max-w-md text-center text-grayishBlue md:text-left">
-                        Organize your bookmarks however you like. Our simple
-                        drag-and-drop interface gives you complete control over how you
-                        manage your favourite sites.
+                        Seneca forum is an experiment project, this project was applied the latest and the most commonest technologies into it. The primary purpose of this project is going to increase our technical reserve.
                       </p>
                       <div className="mx-auto md:mx-0">
                         <a
                           href="#"
                           className="px-6 py-3 mt-4 font-semibold text-white border-2 border-white rounded-lg md:inline-flex bg-softBlue hover:bg-white hover:text-softBlue hover:border-softBlue hover:border-2"
-                        >More Info</a
-                        >
+                        >More Info
+                        </a>
                       </div>
                     </div>
                   </div>

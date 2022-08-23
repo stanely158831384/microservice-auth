@@ -30,7 +30,7 @@ export default function Home() {
             </p>
 
             {/* Buttons container */}
-            <div className="flex items-center justify-center w-full space-x-4 lg:justify-start">
+            <div id="feature" className="flex items-center justify-center w-full space-x-4 lg:justify-start" >
               <a
                 href="#"
                 className="p-4 text-sm font-semibold text-white bg-softBlue rounded shadow-2xl border-2 border-softBlue mt:text-base hover:bg-white hover:text-sofBlue"
@@ -55,7 +55,7 @@ export default function Home() {
 
       <section id="features">
         <div className="container mx-auto mt-16 px-6">
-          <h2 className="mb-6 text-4xl font-cyberFonts text-center">Features</h2>
+          <h2 className="mb-6 text-4xl font-cyberFonts text-center">Goal</h2>
           <p className="max-w-md mx-auto text-center text-grayishBlue">
             Our goal is to create a platform that can connect all canadian students and entrepreneurs together, and based on this platform we
             are going to expand our business to other fields like eduation and e-commerce.
