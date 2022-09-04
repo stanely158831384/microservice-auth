@@ -44,7 +44,7 @@ export default function Home() {
           </div>
 
           {/* Image */}
-          <div className="relative mx-auto lg:mx-0 lg:mb-0 lg:w-1/2">
+          <div className="relative mx-auto lg:mx-0 lg:mb-0 lg:w-1/2 z-49">
             <div className="bg-hero-r"></div>
             <Image src={seconderyPicture} alt="main" id="mainPageId" className="absolute top-0 left-0" />
             {/* <Image src={mainPicture} alt="main" id="secondaryPageId" className="absolute bottom-0 right-0 scale-50"/> */}

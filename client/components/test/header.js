@@ -25,8 +25,8 @@ const header = ({ currentUser }) => {
 
 
   return (
-    <div>
-      <nav className="fixed mx-auto p-2 z-50 bg-slate-200 w-screen infos-2 shadow-racoonBlueA">
+    <div className="sticky top-0 z-50">
+      <nav className=" mx-auto p-2  bg-slate-200 w-screen infos-2 shadow-racoonBlueA">
         {/* Flex Container For Nav Items */}
         <div className="flex items-center justify-between sm:space-x-20  space-x-10 sm:my-6 my-3 w-min mx-auto">
           <div className="z-30 hidden sm:flex w-max h-max">
@@ -149,7 +149,7 @@ const header = ({ currentUser }) => {
     }
     `}</style>
       </nav>
-      <div className='h-48 block bg-slate-200'></div>
+      {/* <div className='h-48 block bg-slate-200'></div> */}
     </div>
 
   )

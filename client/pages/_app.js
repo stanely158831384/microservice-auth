@@ -7,7 +7,7 @@ const MyApp = ({ Component, pageProps, currentUser }) => {
 
   return (
 
-    <div className='bg-slate-200	overflow-x-hidden overflow-y-hidden'>
+    <div className='bg-slate-200'>
       {/* <Background/> */}
       <Header currentUser={currentUser} />
       <div>
