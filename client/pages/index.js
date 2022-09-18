@@ -14,6 +14,7 @@ export default function Home() {
   }
   return (
     <div>
+
       <section id="hero">
         {/* container for the image and text, or we call say the container for this section */}
         <div className="container flex flex-col-reverse mx-auto p-6 lg:flex-row lg:mb-0" >

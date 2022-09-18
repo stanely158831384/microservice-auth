@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/icons8-raccoon-128.svg'
-import { Navbar } from 'flowbite-react';
+import { ArrowRightIcon } from "@heroicons/react/24/solid"
+import { Button, Navbar } from 'flowbite-react';
 import { useState } from "react";
+
 // import Header2 from './header2';
 
 const header = ({ currentUser }) => {
@@ -26,7 +28,7 @@ const header = ({ currentUser }) => {
 
   return (
     <div className="sticky top-0 z-50">
-      <nav className=" mx-auto p-2  bg-slate-200 w-screen infos-2 shadow-racoonBlueA">
+      <nav className=" mx-auto p-2  bg-slate-200  infos-2 shadow-racoonBlueA">
         {/* Flex Container For Nav Items */}
         <div className="flex items-center justify-between sm:space-x-20  space-x-10 sm:my-6 my-3 w-min mx-auto">
           <div className="z-30 hidden sm:flex w-max h-max">
@@ -86,43 +88,7 @@ const header = ({ currentUser }) => {
           </div>
         </div>
 
-        {/* <Navbar
-        fluid={true}
-        rounded={true}
-      >
-        <Navbar.Brand href="https://flowbite.com/">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite
-          </span>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-          <Navbar.Link
-            href="/navbars"
-            active={true}
-          >
-            <span className="font-cyberFonts tracking-widest hover:text-softRed md:text-cyan-500"
-            >Features</span>
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">
-            About
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">
-            Services
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">
-            Pricing
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">
-            Contact
-          </Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar> */}
+
 
         {/* <Header2 /> */}
         <style>{`
@@ -149,6 +115,14 @@ const header = ({ currentUser }) => {
     }
     `}</style>
       </nav>
+
+      <div className="flex mx-auto p-2 bg-lime-500 my-auto justify-center items-center space-x-3">
+        <h3 className="font-bold text-2xl">Wyze security sale</h3>
+        <ArrowRightIcon className="flex h-6 w-6 text-blue-500" />
+        <Button className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+          <Link href="/common/cameraSecurity" >Click here</Link>
+        </Button>
+      </div>
       {/* <div className='h-48 block bg-slate-200'></div> */}
     </div>
 

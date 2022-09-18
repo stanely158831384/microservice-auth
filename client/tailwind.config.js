@@ -26,6 +26,9 @@ module.exports = {
         grayishBlue: 'hsl(229, 8%, 60%)',
         veryDarkBlue: 'hsl(229, 31%, 21%)',
       },
+      scale: {
+        '10': '0.1',
+      }
     },
   },
   plugins: [require('@tailwindcss/line-clamp'), require("flowbite/plugin")],
