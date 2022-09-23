@@ -1,6 +1,11 @@
 import React from 'react'
+import { useRecoilState } from "recoil";
+import { modalState } from "../../../atom/modalAtom"
+import contactUsModal from "../contactUsModal/contactUsModal"
 
 export default function () {
+    const [open, setOpen] = useRecoilState(modalState);
+
     return (
         <>
 
@@ -23,6 +28,7 @@ export default function () {
                                         href="#"
                                         // className="inline-block px-10 py-3 my-6 text-center border border-cyan-500 rounded-lg duration-200 hover:bg-cyan-500 hover:border-cyan-500"
                                         className="font-cyberFonts px-8 py-2 my-4 text-white bg-pink-300 border-b-4 border-b-pink-500 rounded-lg shadow-md hover:bg-pink-500 hover:border-t-6 hover:hover:border-b-0 transition-all duration-100 block"
+                                        onClick={() => setOpen(true)}
                                     >Contact Us</a
                                     >
                                 </div>
@@ -38,13 +44,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -55,13 +61,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -72,13 +78,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -89,13 +95,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -106,13 +112,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -148,13 +154,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -165,13 +171,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -209,13 +215,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -226,13 +232,13 @@ export default function () {
                                     <div className="flex justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             viewBox="0 0 24 24"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke="currentColor"
                                             fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M5 12l5 5l10 -10" />
@@ -248,6 +254,8 @@ export default function () {
 
                     </div>
                 </div>
+
+                {/* < contactUsModal /> */}
             </div>
 
         </>

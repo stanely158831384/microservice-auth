@@ -7,6 +7,7 @@ import TabsRender from '../components/test/tabs'
 import Accordin from '../components/test/accordin'
 import Faq from '../components/test/faq'
 import Footer from '../components/test/footer'
+import UploadModal from '../components/test/contactUsModal/contactUsModal'
 
 export default function Home() {
   const handleClick = (e) => {
@@ -80,6 +81,8 @@ export default function Home() {
       <section id="footer">
         <Footer />
       </section>
+
+
 
 
 

@@ -45,7 +45,7 @@ export default function () {
 
             {/* topic */}
             <div className="flex relative flex-col rounded-3xl m-10 shadow-xl min-h-fit	" style={styles.introductionBackground}>
-                <p className="z-40 flex  mx-auto  mt-10 sm:text-8xl text-2xl w-fit text-center bg-clip-text text-transparent bg-gradient-to-b from-green-500 to-blue-500 text-shadow-color font-cyberFonts">Introduction</p>
+                <p className=" relative flex  mx-auto  mt-10 sm:text-8xl text-2xl w-fit text-center bg-clip-text text-transparent bg-gradient-to-b from-green-500 to-blue-500 text-shadow-color font-cyberFonts">Introduction</p>
                 {/* Description frame*/}
                 <div className="flex sm:flex-row-reverse flex-col m-5">
                     {/* what is wyze */}
