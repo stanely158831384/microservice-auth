@@ -8,7 +8,7 @@ import Accordin from '../components/test/accordin'
 import Faq from '../components/test/faq'
 import Footer from '../components/test/footer'
 import UploadModal from '../components/test/contactUsModal/contactUsModal'
-
+import { Carousel } from 'flowbite-react'
 export default function Home() {
   const handleClick = (e) => {
 
@@ -65,6 +65,25 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="pictureIntroduction">
+        <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 m-10">
+          <Carousel slideInterval={5000}>
+            <img
+              src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+              alt="..."
+            />
+            <img
+              src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
+              alt="..."
+            />
+            <img
+              src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
+              alt="..."
+            />
+          </Carousel>
+        </div>
+      </section>
+
       <section id="tabs">
         <TabsRender />
       </section>
@@ -78,9 +97,9 @@ export default function Home() {
       </section>
 
 
-      <section id="footer">
+      {/* <section id="footer">
         <Footer />
-      </section>
+      </section> */}
 
 
 

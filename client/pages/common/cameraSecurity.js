@@ -15,9 +15,7 @@ export default function cameraSecurity() {
       <section id="contactModal">
         <UploadModal />
       </section>
-      <section id="footer">
-        <Footer />
-      </section>
+
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import Header from '../components/test/header'
+import Footer from '../components/test/footer'
 import Background from '../components/test/background'
 import buildClient from '../api/build-client'
 import {
@@ -14,13 +15,15 @@ const MyApp = ({ Component, pageProps, currentUser }) => {
 
   return (
 
-    <div className='bg-slate-200' style={{ overflow: "hidden" }}>
+    <div className='bg-slate-200' style={{ overflow: "hidden" }} >
       {/* <Background/> */}
       <RecoilRoot>
         <Header currentUser={currentUser} />
         <div>
           <Component {...pageProps} currentUser={currentUser} />
         </div>
+        <Footer />
+
       </RecoilRoot>
     </div>
   )

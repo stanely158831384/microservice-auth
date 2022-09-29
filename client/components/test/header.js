@@ -2,8 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/icons8-raccoon-128.svg'
 import { ArrowRightIcon } from "@heroicons/react/24/solid"
-import { Button, Navbar } from 'flowbite-react';
+import { Button, Navbar, Dropdown } from 'flowbite-react';
 import { useState } from "react";
+import ProductsList from "./productsList/productsList"
+import ServicesList from "./productsList/servicesList"
 
 // import Header2 from './header2';
 
@@ -47,12 +49,15 @@ const header = ({ currentUser }) => {
           <div
             className="hidden items-center space-x-10 uppercase text-grayishBlue md:flex "
           >
-            <a href="#feature" className="font-cyberFonts tracking-widest hover:text-softRed md:text-cyan-500"
-            >Features</a>
-            <a href="#faq" className="font-cyberFonts tracking-widest hover:text-softRed"
+            <ServicesList />
+            <a href="/common/contact" className="font-cyberFonts tracking-widest hover:text-softRed"
             >Contact</a>
             <a href="#faq" className=" font-cyberFonts tracking-widest hover:text-softRed w-min">About Us</a>
+
             {links}
+
+          </div>
+          <div>
 
           </div>
           <button
@@ -64,6 +69,7 @@ const header = ({ currentUser }) => {
             <span className="hamburger-middle"></span>
             <span className="hamburger-bottom"></span>
           </button>
+
         </div>
 
 
@@ -87,6 +93,9 @@ const header = ({ currentUser }) => {
             {links}
           </div>
         </div>
+
+
+
 
 
 
@@ -116,7 +125,7 @@ const header = ({ currentUser }) => {
     `}</style>
       </nav>
 
-      <div className="flex mx-auto p-2 bg-lime-500 my-auto justify-center items-center space-x-3">
+      <div className="flex mx-auto p-2 bg-lime-500 justify-center items-center space-x-3">
         <h3 className="font-bold text-2xl">Wyze security sale</h3>
         <ArrowRightIcon className="flex h-6 w-6 text-blue-500" />
         <Button className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">

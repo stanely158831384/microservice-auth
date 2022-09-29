@@ -139,6 +139,7 @@ export default function () {
                                         href="#"
                                         // className="inline-block px-10 py-3 my-6 text-center border border-cyan-500 rounded-lg duration-200 hover:bg-cyan-500 hover:border-cyan-500"
                                         className="font-cyberFonts px-8 py-2 my-4 text-white bg-pink-300 border-b-4 border-b-pink-500 rounded-lg shadow-md hover:bg-pink-500 hover:border-t-6 hover:border-b-0 transition-all duration-100 block"
+                                        onClick={() => setOpen(true)}
                                     >Contact Us</a
                                     >
                                 </div>
@@ -200,6 +201,7 @@ export default function () {
                                         href="#"
                                         // className="inline-block px-10 py-3 my-6 text-center border border-cyan-500 rounded-lg duration-200 hover:bg-cyan-500 hover:border-cyan-500"
                                         className="font-cyberFonts px-8 py-2 my-4 text-white bg-pink-300 border-b-4 border-b-pink-500 rounded-lg shadow-md hover:bg-pink-500 hover:border-t-6 hover:border-b-0 transition-all duration-100 block"
+                                        onClick={() => setOpen(true)}
                                     >Contact Us</a
                                     >
                                 </div>
@@ -255,7 +257,7 @@ export default function () {
                     </div>
                 </div>
 
-                {/* < contactUsModal /> */}
+
             </div>
 
         </>

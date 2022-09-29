@@ -5,6 +5,7 @@ import { CameraIcon } from "@heroicons/react/outline"
 import { useRef, useState } from "react"
 import { modalState } from "../../../atom/modalAtom"
 import { Tabs } from "flowbite-react";
+import { Dropdown } from "flowbite-react";
 
 export default function contactUsModal() {
     const [open, setOpen] = useRecoilState(modalState);
@@ -12,6 +13,11 @@ export default function contactUsModal() {
     const customStyles = {
         content: {},
         overlay: { zIndex: 1000 }
+    }
+
+    const handleClose = (e) => {
+        e.preventDefault();
+        setOpen(false);
     }
 
     return (
@@ -43,38 +49,39 @@ export default function contactUsModal() {
                                 <li className="font-bold text-2xl m-2">1.Please contact us by this Email: racoonrepubliccanada@gmail.ca .</li>
                             </ol>
                         </div> */}
-                        <div className="mx-auto">
+
+
+                        <div className="m-10">
                             <Tabs.Group
                                 aria-label="Pills"
                                 style="pills"
-                                customclass="mx-auto"
+                                className="mx-auto"
                             >
                                 <Tabs.Item
                                     active={true}
-                                    title="Tab 1"
+                                    title="Step 1"
                                 >
-                                    Content 1
+                                    1.Please contact us by this number: +1(647)856-9355.
+                                    <br />
+                                    or
+                                    <br />
+                                    1.Please contact us by this email: racoonrepubliccanada@gmail.com
                                 </Tabs.Item>
-                                <Tabs.Item title="Tab 2">
-                                    Content 2
+                                <Tabs.Item title="Step 2">
+                                    2.Once the installation is scheduled, we will send one of our technician to your location.
                                 </Tabs.Item>
-                                <Tabs.Item title="Tab 3">
-                                    Content 3
+                                <Tabs.Item title="Step 3">
+                                    3.After a full review of your property, we will give your a quotation list.
                                 </Tabs.Item>
-                                <Tabs.Item title="Tab 4">
-                                    Content 4
-                                </Tabs.Item>
-                                <Tabs.Item
-                                    disabled={true}
-                                    title="Tab 5"
-                                >
-                                    Content 5
+                                <Tabs.Item title="Step 4">
+                                    4.Once the client accepts the quote, our customer service will schedule the installation time. Usually the date of installation will be scheduled within 7 business days.
                                 </Tabs.Item>
                             </Tabs.Group>
                         </div>
 
-
-
+                        <a href="#" className=" font-cyberFonts px-8 py-2 my-4 text-white text-center bg-racoonBlueA border-b-4 border-b-racoonBlueB rounded-lg shadow-md hover:bg-racoonBlueB hover:border-t-6 hover:border-b-0 transition-all duration-100 block"
+                            onClick={handleClose}
+                        >close</a>
 
                     </Modal>
                 </>
