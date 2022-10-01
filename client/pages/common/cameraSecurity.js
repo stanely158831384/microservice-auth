@@ -5,7 +5,7 @@ import PriceSelection from '../../components/test/priceSelection/priceSelection'
 import UploadModal from '../../components/test/contactUsModal/contactUsModal'
 export default function cameraSecurity() {
   return (
-    <div>
+    <div style={{ overflow: "hidden" }}>
       <section id="introduction">
         <WyzeIntrodution />
       </section>

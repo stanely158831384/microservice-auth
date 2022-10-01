@@ -4,7 +4,7 @@ import Footer from '../../components/test/footer'
 import { PhoneIcon } from '@heroicons/react/24/solid'
 export default function contact() {
     return (
-        <div className="h-screen">
+        <div className="h-screen" style={{ overflow: "hidden" }}>
 
             <section id="pageTitle">
                 <h1 className="text-center font-bold text-6xl m-10">Contact</h1>

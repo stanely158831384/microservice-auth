@@ -13,7 +13,7 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <link href="https://fonts.googleapis.com/css2?family=Alata&family=Press+Start+2P&display=swap" rel="stylesheet" />
         </Head>
-        <body style={{ overflow: "auto" }}>
+        <body >
           <Main />
           <NextScript />
         </body>

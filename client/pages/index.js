@@ -14,7 +14,7 @@ export default function Home() {
 
   }
   return (
-    <div>
+    <div style={{ overflow: "hidden" }}>
 
       <section id="hero">
         {/* container for the image and text, or we call say the container for this section */}

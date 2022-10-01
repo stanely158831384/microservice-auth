@@ -15,7 +15,7 @@ const MyApp = ({ Component, pageProps, currentUser }) => {
 
   return (
 
-    <div className='bg-slate-200' style={{ overflow: "hidden" }} >
+    <div className='bg-slate-200'  >
       {/* <Background/> */}
       <RecoilRoot>
         <Header currentUser={currentUser} />
