@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//this is going to tell us where are we, because this code could be run by server or browser.
 const custom_build = ({ req }) => {
   if (typeof window === "undefined") {
     var baseURL =

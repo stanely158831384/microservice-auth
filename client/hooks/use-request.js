@@ -1,32 +1,43 @@
-import axios from 'axios';
-import { useState } from 'react';
+import axios from "axios";
+import { useState } from "react";
 
 const useRequest = ({ url, method, body, onSuccess }) => {
-    const [errors, setErrors] = useState(null);
-    const doRequest = async (props = {}) => {
-        try {
-            setErrors(null);
-            const response = await axios[method](url, { ...body, ...props });
+  const [errors, setErrors] = useState(null);
+  const doRequest = async (props = {}) => {
+    try {
+      setErrors(null);
+      const response = await axios[method](url, { ...body, ...props });
 
-            if (onSuccess) {
-                onSuccess(response.data);
-            }
+      if (onSuccess) {
+        onSuccess(response.data);
+      }
 
-            return response.data;
-
-        } catch (err) {
-            setErrors(
-                <div className='alert alert-danger'>
-                    <h4>Ooooops.......</h4>
-                    <ul className="my-0">
-                        {err.response.data.errors.map(err => <li key={err.message}>{err.message}</li>)}
-                    </ul>
-                </div>
-            )
-        }
+      return response.data;
+    } catch (err) {
+      if (err.response) {
+        setErrors(
+          <div className="alert alert-danger">
+            <h4>Ooooops.......</h4>
+            <ul className="my-0">
+              {err.response.data.errors.map((err) => (
+                <li key={err.message}>{err.message}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      } else {
+        console.log("here is the err data:", err);
+        setErrors(
+          <div className="alert alert-danger">
+            <h4>Ooooops.......</h4>
+            <ul className="my-0">Unknown error</ul>
+          </div>
+        );
+      }
     }
+  };
 
-    return { doRequest, errors };
-}
+  return { doRequest, errors };
+};
 
 export default useRequest;

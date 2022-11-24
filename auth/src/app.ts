@@ -3,10 +3,13 @@ import "express-async-errors";
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
 
+import { changeUserInfo } from "./routes/change-user-info";
 import { currentUserRouter } from "./routes/current-user";
+import { currentUserProfileRouter } from "./routes/current-user-profile";
 import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
+import { changePassword } from "./routes/change-password";
 import { errorHandler, NotFoundError } from "@racoonrepublic/common";
 
 const app = express();
@@ -20,8 +23,10 @@ app.use(
     // secure: false,
   })
 );
-
+app.use(currentUserProfileRouter);
 app.use(currentUserRouter);
+app.use(changePassword);
+app.use(changeUserInfo);
 app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);

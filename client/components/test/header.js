@@ -1,40 +1,50 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import logo from '../../public/icons8-raccoon-128.svg'
-import { ArrowRightIcon } from "@heroicons/react/24/solid"
-import { Button, Navbar, Dropdown } from 'flowbite-react';
+import Link from "next/link";
+import Image from "next/image";
+import logo from "../../public/icons8-raccoon-128.svg";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { Button, Navbar, Dropdown } from "flowbite-react";
 import { useState } from "react";
-import ProductsList from "./productsList/productsList"
-import ServicesList from "./productsList/servicesList"
+import ProductsList from "./productsList/productsList";
+import ServicesList from "./productsList/servicesList";
 
 // import Header2 from './header2';
 
 const header = ({ currentUser }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
-
   const links = [
-    !currentUser && { label: 'Sign Up', href: '/auth/signup' },
-    !currentUser && { label: 'Sign In', href: '/auth/signin' },
-    currentUser && { label: 'Sign Out', href: '/auth/signout' },
-  ].filter(linksConfig => linksConfig).map(({ label, href }) => {
-    return (
-      <Link href={href} key={href}>
-        <a href="#" className="font-cyberFonts px-8 py-2 my-4 text-white bg-racoonBlueA border-b-4 border-b-racoonBlueB rounded-lg shadow-md hover:bg-racoonBlueB hover:border-t-6 hover:border-b-0 transition-all duration-100 block"
-        >{label}</a>
-      </Link>
-    )
-
-  })
-
+    !currentUser && { label: "Sign Up", href: "/auth/signup" },
+    !currentUser && { label: "Sign In", href: "/auth/signin" },
+    currentUser && { label: "Sign Out", href: "/auth/signout" },
+    currentUser && { label: "User Center", href: "/user" },
+  ]
+    .filter((linksConfig) => linksConfig)
+    .map(({ label, href }) => {
+      return (
+        <Link href={href} key={href}>
+          <a
+            href="#"
+            className="font-cyberFonts px-8 py-2 my-4 text-white bg-racoonBlueA border-b-4 border-b-racoonBlueB rounded-lg shadow-md hover:bg-racoonBlueB hover:border-t-6 hover:border-b-0 transition-all duration-100 block"
+          >
+            {label}
+          </a>
+        </Link>
+      );
+    });
 
   return (
     <div className="sticky top-0 z-50">
       <nav className=" mx-auto p-2  bg-slate-200  infos-2 shadow-racoonBlueA">
         {/* Flex Container For Nav Items */}
         <div className="flex items-center justify-between sm:space-x-20  space-x-10 sm:my-6 my-3 w-min mx-auto">
-          <div className="z-30 hidden sm:flex w-max h-max">
-            <Image src={logo} alt="" id="logo" />
+          <div className="z-30 hidden sm:flex w-max h-max absolute">
+            <Image
+              src={logo}
+              alt=""
+              width={50}
+              height={50}
+              object-fit="cover"
+            />
           </div>
 
           <div className="group">
@@ -43,23 +53,26 @@ const header = ({ currentUser }) => {
                 Racoon Republic
               </a>
             </Link>
-
           </div>
 
-          <div
-            className="hidden items-center space-x-10 uppercase text-grayishBlue md:flex "
-          >
+          <div className="hidden items-center space-x-10 uppercase text-grayishBlue md:flex ">
             <ServicesList />
-            <a href="/common/contact" className="font-cyberFonts tracking-widest hover:text-softRed"
-            >Contact</a>
-            <a href="#faq" className=" font-cyberFonts tracking-widest hover:text-softRed w-min">About Us</a>
+            <a
+              href="/common/contact"
+              className="font-cyberFonts tracking-widest hover:text-softRed"
+            >
+              Contact
+            </a>
+            <a
+              href="#faq"
+              className=" font-cyberFonts tracking-widest hover:text-softRed w-min"
+            >
+              About Us
+            </a>
 
             {links}
-
           </div>
-          <div>
-
-          </div>
+          <div></div>
           <button
             id="menu-btn"
             className="z-30 block md:hidden focus:outline-none hamburger "
@@ -69,35 +82,37 @@ const header = ({ currentUser }) => {
             <span className="hamburger-middle"></span>
             <span className="hamburger-bottom"></span>
           </button>
-
         </div>
-
-
 
         <div
           id="menu"
           // className="fixed inset-0 z-20 hidden flex-col items-center self-end w-full h-full m-h-screen px-6 py-1 pt-24 pb-4 tracking-widest text-white uppercase divide-y divide-gray-500 opacity-90 bg-veryDarkBlue"
-          className={isNavOpen ? "showMenuNav fixed inset-0 z-20 hidden flex-col items-center self-end w-full h-full m-h-screen px-6 py-1 pt-24 pb-4 tracking-normal	 text-black uppercase divide-y divide-gray-500 opacity-90 bg-veryDarkBlue" : "hideMenuNav fixed inset-0 z-20 hidden flex-col items-center self-end w-full h-full m-h-screen px-6 py-1 pt-24 pb-4 tracking-widest text-white uppercase divide-y divide-gray-500 opacity-90 bg-veryDarkBlue"}
+          className={
+            isNavOpen
+              ? "showMenuNav fixed inset-0 z-20 hidden flex-col items-center self-end w-full h-full m-h-screen px-6 py-1 pt-24 pb-4 tracking-normal	 text-black uppercase divide-y divide-gray-500 opacity-90 bg-veryDarkBlue"
+              : "hideMenuNav fixed inset-0 z-20 hidden flex-col items-center self-end w-full h-full m-h-screen px-6 py-1 pt-24 pb-4 tracking-widest text-white uppercase divide-y divide-gray-500 opacity-90 bg-veryDarkBlue"
+          }
         >
           <div className="w-full py-3 text-center">
-            <a href="#features" className="block hover:text-softRed">Features</a>
+            <a href="#features" className="block hover:text-softRed">
+              Features
+            </a>
           </div>
           <div className="w-full py-3 text-center">
-            <a href="#download" className="block hover:text-softRed">Download</a>
+            <a href="#download" className="block hover:text-softRed">
+              Download
+            </a>
           </div>
           <div className="w-full py-3 text-center">
-            <a href="#faq" className="block hover:text-softRed">FAQ</a>
+            <a href="#faq" className="block hover:text-softRed">
+              FAQ
+            </a>
           </div>
           <div className="w-full py-3 text-center ">
             {/* <a href="#" className="block hover:text-softRed">Login</a> */}
             {links}
           </div>
         </div>
-
-
-
-
-
 
         {/* <Header2 /> */}
         <style>{`
@@ -129,13 +144,12 @@ const header = ({ currentUser }) => {
         <h3 className="font-bold text-2xl">Wyze security sale</h3>
         <ArrowRightIcon className="flex h-6 w-6 text-blue-500" />
         <Button className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-          <Link href="/common/cameraSecurity" >Click here</Link>
+          <Link href="/common/cameraSecurity">Click here</Link>
         </Button>
       </div>
       {/* <div className='h-48 block bg-slate-200'></div> */}
     </div>
-
-  )
-}
+  );
+};
 
 export default header;
