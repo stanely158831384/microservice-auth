@@ -10,6 +10,8 @@ import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
 import { changePassword } from "./routes/change-password";
+import { multiTest } from "./routes/multi-test";
+import { multiSignupRouter } from "./routes/multi-signup";
 import { errorHandler, NotFoundError } from "@racoonrepublic/common";
 
 const app = express();
@@ -30,6 +32,8 @@ app.use(changeUserInfo);
 app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);
+app.use(multiTest);
+app.use(multiSignupRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();

@@ -3,9 +3,9 @@ import { body } from "express-validator";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user";
 import { BadRequestError, validateRequest } from "@racoonrepublic/common";
+import { Worker, isMainThread } from "worker_threads";
 
 const router = express.Router();
-
 router.post(
   "/api/users/signup",
   [
