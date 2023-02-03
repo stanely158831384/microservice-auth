@@ -60,7 +60,6 @@ router.post(
     });
     w1.once("message", (result) => {
       console.log(`${result}`);
-
       res.status(201).send(JSON.parse(result));
     });
     w1.on("error", (error) => {
