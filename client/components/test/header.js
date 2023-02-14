@@ -36,7 +36,7 @@ const header = ({ currentUser }) => {
     <div className="sticky top-0 z-50">
       <nav className=" mx-auto p-2  bg-slate-200  infos-2 shadow-racoonBlueA">
         {/* Flex Container For Nav Items */}
-        <div className="flex items-center justify-between sm:space-x-20  space-x-10 sm:my-6 my-3 w-min mx-auto">
+        <div className="flex items-center justify-between sm:space-x-20  space-x-10 sm:my-1 my-3 w-min mx-auto ">
           <div className="z-30 hidden sm:flex w-max h-max absolute">
             <Image
               src={logo}
@@ -57,18 +57,22 @@ const header = ({ currentUser }) => {
 
           <div className="hidden items-center space-x-10 uppercase text-grayishBlue md:flex ">
             <ServicesList />
-            <a
-              href="/common/contact"
-              className="font-cyberFonts tracking-widest hover:text-softRed"
-            >
-              Contact
-            </a>
-            <a
-              href="#faq"
-              className=" font-cyberFonts tracking-widest hover:text-softRed w-min"
-            >
-              About Us
-            </a>
+            <Link href="/forum">
+              <a className="font-cyberFonts tracking-widest hover:text-softRed">
+                Forum Alpha
+              </a>
+            </Link>
+
+            <Link href="/common/contact">
+              <a className="font-cyberFonts tracking-widest hover:text-softRed">
+                Contact
+              </a>
+            </Link>
+            <Link href="#faq">
+              <a className=" font-cyberFonts tracking-widest hover:text-softRed w-min">
+                About Us
+              </a>
+            </Link>
 
             {links}
           </div>

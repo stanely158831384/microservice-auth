@@ -9,7 +9,7 @@ import { Carousel } from "flowbite-react";
 export default function Home() {
   const handleClick = (e) => {};
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div>
       <section id="hero">
         {/* container for the image and text, or we call say the container for this section */}
         <div className="container flex flex-col-reverse mx-auto p-6 lg:flex-row lg:mb-0">
@@ -110,4 +110,9 @@ export default function Home() {
       </section> */}
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  console.log("pages.index", context);
+  return { props: {} };
 }

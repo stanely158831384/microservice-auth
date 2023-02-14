@@ -12,9 +12,19 @@ spec:
       labels:
         app: comments-mongo
     spec:
+      volumes:
+        - name: comments-mongodb-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim-mongodb-comments
       containers:
         - name: comments-mongo
           image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: comments-mongodb-storage
+              mountPath: /data/db
+              subPath: mongodb
 
 ---
 apiVersion: v1

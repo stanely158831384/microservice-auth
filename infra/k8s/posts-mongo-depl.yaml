@@ -12,9 +12,19 @@ spec:
       labels:
         app: posts-mongo
     spec:
+      volumes:
+        - name: posts-mongodb-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim-mongodb-posts
       containers:
         - name: posts-mongo
           image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: posts-mongodb-storage
+              mountPath: /data/db
+              subPath: mongodb
 ---
 apiVersion: v1
 kind: Service

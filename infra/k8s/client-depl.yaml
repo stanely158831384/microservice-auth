@@ -15,8 +15,10 @@ spec:
       containers:
         - name: client
           image: stanley158831384/client
+          env:
+            - name: MONGO_URI
+              value: "mongodb://posts-mongo-srv:27017/posts"
 ---
-
 apiVersion: v1
 kind: Service
 metadata:

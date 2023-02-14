@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 @media (prefers-color-scheme: white) {
   html {
     color-scheme: dark;
@@ -16,10 +13,10 @@
 }
 @media screen(lg) {
   .bg-hero-r {
-    width: 2000px;
+    width: 500px;
     height: 300px;
     left: 30%;
-    @apply absolute rounded-l-full top-52 bg-racoonBlueA;
+    @apply absolute rounded-full top-52 bg-racoonBlueA;
   }
 
   .bg-hero-l {
@@ -28,9 +25,7 @@
     right: 70%;
     @apply absolute rounded-r-full top-52 bg-racoonBlueA;
   }
-
 }
-
 
 /* HAMBURGER MENU */
 
@@ -45,7 +40,7 @@
 .hamburger-top,
 .hamburger-middle,
 .hamburger-bottom {
-  content: '';
+  content: "";
   position: absolute;
   width: 24px;
   height: 3px;
@@ -93,13 +88,31 @@
   overflow: hidden;
   z-index: -1;
   } */
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
 
-  html {
-    overflow: hidden;
-    height: 100%;
+.svg-icon {
+  width: 2em;
+  height: 2em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #4691f6;
+}
+
+.svg-icon circle {
+  stroke: #4691f6;
+  stroke-width: 1;
+}
+html {
+  overflow: hidden;
+  height: 100%;
 }
 
 body {
-    height: 100%;
-    overflow: auto;
+  height: 100%;
+  overflow: auto;
 }

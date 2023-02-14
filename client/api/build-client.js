@@ -6,8 +6,7 @@ const custom_build = ({ req }) => {
     // var baseURL =
     //   "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local";
     var baseURL = "http://www.racoonrepublic.ca/";
-    var asb = "asdf";
-
+    // console.log("headers", req.headers);
     return axios.create({
       baseURL,
       headers: req.headers,
