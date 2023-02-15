@@ -6,7 +6,9 @@ const router = express.Router();
 
 router.get("/api/posts", async (req: Request, res: Response) => {
   console.log("in the /api/posts");
-  const post = await Post.find({});
+  const post = await Post.find({
+    _id: undefined,
+  });
   if (!post) {
     console.log("post", post);
     throw new BadRequestError("post find error");
