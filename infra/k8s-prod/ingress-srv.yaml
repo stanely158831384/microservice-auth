@@ -59,7 +59,13 @@ spec:
                 name: postss-srv
                 port:
                   number: 3000
-
+          - path: /api/postss
+            pathType: Prefix
+            backend:
+              service:
+                name: postss-srv
+                port:
+                  number: 3000
 ---
 apiVersion: v1
 kind: Service
