@@ -21,11 +21,11 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: NATS_URL
-              value: 'http://nats-srv:4222'
+              value: "http://nats-srv:4222"
             - name: NATS_CLUSTER_ID
               value: ticketing
             - name: MONGO_URI
-              value: 'mongodb://posts-mongo-srv:27017/posts'
+              value: "mongodb://posts-mongo-srv:27017/posts"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -41,7 +41,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-srv
+  name: postss-srv
 spec:
   selector:
     app: posts

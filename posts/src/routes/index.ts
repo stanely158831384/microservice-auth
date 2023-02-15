@@ -4,7 +4,7 @@ import { validateRequest, BadRequestError } from "@racoonrepublic/common";
 
 const router = express.Router();
 
-router.get("/api/posts", async (req: Request, res: Response) => {
+router.get("/api/postss", async (req: Request, res: Response) => {
   console.log("in the /api/posts");
   const post = await Post.find({
     _id: undefined,
