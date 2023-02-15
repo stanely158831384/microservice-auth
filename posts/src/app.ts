@@ -24,13 +24,13 @@ app.use(
   })
 );
 
-app.use(currentUser);
+// app.use(currentUser);
 
-// app.use(deletePostRouter);
-// app.use(indexPostRouter);
-// app.use(newPostRouter);
-// app.use(showPostRouter);
-// app.use(updatePostRouter);
+app.use(deletePostRouter);
+app.use(indexPostRouter);
+app.use(newPostRouter);
+app.use(showPostRouter);
+app.use(updatePostRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
