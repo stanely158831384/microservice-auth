@@ -14,6 +14,7 @@ import { showPostRouter } from "./routes/show";
 import { updatePostRouter } from "./routes/update";
 
 const app = express();
+console.log("in app.ts");
 app.set("trust proxy", true);
 app.use(json());
 app.use(
@@ -32,10 +33,10 @@ app.use(newPostRouter);
 app.use(showPostRouter);
 app.use(updatePostRouter);
 
-// app.all("*", async () => {
-//   throw new NotFoundError();
-// });
+app.all("*", async () => {
+  throw new NotFoundError();
+});
 
-// app.use(errorHandler);
+app.use(errorHandler);
 
 export { app };
