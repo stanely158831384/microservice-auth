@@ -28,9 +28,10 @@ const forum = ({ data }) => {
 export async function getServerSideProps(context) {
   // console.log("getServerSideProps", context);
 
-  const result = await build_client(context).get("/api/posts");
+  // const result = await build_client(context).get("/api/posts");
   // console.log("result", result.data);
-  return { props: { data: result.data } };
+  // return { props: { data: result.data } };
+  return { props: { data: {} } };
 }
 
 // export async function getStaticProps(context) {
