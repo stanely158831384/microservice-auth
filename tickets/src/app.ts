@@ -11,7 +11,7 @@ import { createTicketRouter } from "./routes/new";
 import { showTicketRouter } from "./routes/show";
 import { indexTicketRouter } from "./routes/index";
 import { updateTicketRouter } from "./routes/update";
-
+console.log("tickets app.ts");
 const app = express();
 let secure: boolean = process.env.NODE_ENV === "development";
 
