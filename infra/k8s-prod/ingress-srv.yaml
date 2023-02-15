@@ -60,6 +60,7 @@ spec:
                 name: posts-srv
                 port:
                   number: 3000
+
 ---
 apiVersion: v1
 kind: Service
