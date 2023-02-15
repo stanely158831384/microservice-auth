@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-// app.use(currentUser);
+app.use(currentUser);
 
 app.use(deletePostRouter);
 app.use(indexPostRouter);
