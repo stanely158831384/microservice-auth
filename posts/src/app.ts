@@ -32,9 +32,9 @@ app.use(newPostRouter);
 app.use(showPostRouter);
 app.use(updatePostRouter);
 
-app.all("*", async () => {
-  throw new NotFoundError();
-});
+// app.all("*", async () => {
+//   throw new NotFoundError();
+// });
 
 // app.use(errorHandler);
 
