@@ -52,18 +52,11 @@ spec:
                 name: comments-srv
                 port:
                   number: 3000
-          - path: /api/postss/?(.*)
+          - path: /api/posts/?(.*)
             pathType: Prefix
             backend:
               service:
-                name: postss-srv
-                port:
-                  number: 3000
-          - path: /api/postss
-            pathType: Prefix
-            backend:
-              service:
-                name: postss-srv
+                name: posts-srv
                 port:
                   number: 3000
 ---

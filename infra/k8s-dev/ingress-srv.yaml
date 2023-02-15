@@ -56,6 +56,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: postss-srv
+                name: posts-srv
                 port:
                   number: 3000

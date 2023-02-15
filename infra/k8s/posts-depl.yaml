@@ -41,7 +41,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postss-srv
+  name: -srv
 spec:
   selector:
     app: posts
