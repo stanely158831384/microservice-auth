@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments2-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comments2
+  template:
+    metadata:
+      labels:
+        app: comments2
+    spec:
+      containers:
+        - name: comments2
+          image: stanley158831384/comments2
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: "http://nats-srv:4222"
+            - name: NATS_CLUSTER_ID
+              value: ticketing
+            - name: MONGO_URI
+              value: "mongodb://comments2-mongo-srv:27017/comments2"
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments2-srv
+spec:
+  selector:
+    app: comments2
+  ports:
+    - name: comments2
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
