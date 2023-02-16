@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tickets2-depl
+  name: posts2-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tickets2
+      app: posts2
   template:
     metadata:
       labels:
-        app: tickets2
+        app: posts2
     spec:
       containers:
-        - name: tickets2
-          image: stanley158831384/tickets2
+        - name: posts2
+          image: stanley158831384/posts2
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
@@ -25,7 +25,7 @@ spec:
             - name: NATS_CLUSTER_ID
               value: ticketing
             - name: MONGO_URI
-              value: "mongodb://tickets2-mongo-srv:27017/tickets2"
+              value: "mongodb://posts2-mongo-srv:27017/posts2"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -35,12 +35,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tickets2-srv
+  name: posts2-srv
 spec:
   selector:
-    app: tickets2
+    app: posts2
   ports:
-    - name: tickets2
+    - name: posts2
       protocol: TCP
       port: 3000
       targetPort: 3000
