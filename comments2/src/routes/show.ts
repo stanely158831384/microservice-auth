@@ -4,7 +4,7 @@ import { Comment } from "../models/comment";
 
 const router = express.Router();
 
-router.get("/api/comments/:id", async (req: Request, res: Response) => {
+router.get("/api/comments2/:id", async (req: Request, res: Response) => {
   const commentItem = await Comment.findById(req.params.id);
   if (!commentItem) {
     throw new NotFoundError();
