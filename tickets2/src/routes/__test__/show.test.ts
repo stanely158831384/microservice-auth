@@ -1,35 +1,25 @@
+import mongoose from 'mongoose';
 import request from 'supertest'
-import {app} from '../../app'
-import mongoose from 'mongoose'
+import { app } from '../../app'
+import { Post } from '../../models/post';
 
 
-
-it('return a 404 if the ticket isnot found', async ()=>{
+it("create a post and use show api",async ()=>{
     const id = new mongoose.Types.ObjectId().toHexString();
-    await request(app)
-        .get(`/api/tickets/${id}`)
-        .send()
-        .expect(404);
-});
-
-it('returns the ticket if the ticket is not found', async ()=>{
-    const title = 'connect';
-    const price = 20;
-
-    const response = await request(app)
-        .post('/api/tickets')
-        .set('Cookie', global.signin())
+    const userOne = global.signin(id);
+    const post1 = await request(app)
+        .post(`/api/posts`)
+        .set('Cookie',userOne)
         .send({
-            title, price
+            title: '123',
+            type: ['fashion'],
+            detail: 'this is the detail',
         })
         .expect(201);
 
-    const ticketResponse = await request(app)
-        .get(`/api/tickets/${response.body.id}`)
-        .send()
+    const post2 = await request(app)
+        .get(`/api/posts/${post1.body.id}`)
         .expect(200);
 
-    expect(ticketResponse.body.title).toEqual(title);
-    expect(ticketResponse.body.price).toEqual(price);
-
+    expect(post2.body.userId).toEqual(id);
 })

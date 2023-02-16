@@ -1,60 +1,31 @@
+import { NotFoundError } from "@racoonrepublic/common";
 import express, { Request, Response } from "express";
+import { Post } from "../models/post";
 import { body } from "express-validator";
-import {
-  validateRequest,
-  NotFoundError,
-  requireAuth,
-  NotAuthorizedError,
-  BadRequestError,
-} from "@racoonrepublic/common";
-
-import { Ticket } from "../models/tickets";
-import { TicketUpdatedPublisher } from "../events/publishers/ticket-updated-publisher";
-import { natsWrapper } from "../nats-wrapper";
 
 const router = express.Router();
 
 router.put(
-  "/api/tickets2/:id",
-  requireAuth,
+  "/api/posts2/:id",
   [
-    body("title").not().isEmpty().withMessage("Title is required"),
-    body("price")
-      .isFloat({ gt: 0 })
-      .withMessage("price must be provided and must be greater than 0"),
+    body("detail")
+      .trim()
+      .isLength({ min: 2, max: 300 })
+      .withMessage("detail must be between 4 and 20 characters"),
   ],
-  validateRequest,
   async (req: Request, res: Response) => {
-    const ticket = await Ticket.findById(req.params.id);
-
-    if (!ticket) {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
       throw new NotFoundError();
     }
 
-    if (ticket.orderId) {
-      throw new BadRequestError("Cannot edit a reserved ticket");
-    }
+    const update = await Post.updateOne(
+      { _id: post.id },
+      { detail: req.body.detail }
+    );
 
-    if (ticket.userId !== req.currentUser!.id) {
-      throw new NotAuthorizedError();
-    }
-
-    ticket.set({
-      title: req.body.title,
-      price: req.body.price,
-    });
-
-    await ticket.save();
-    await new TicketUpdatedPublisher(natsWrapper.client).publish({
-      id: ticket.id,
-      title: ticket.title,
-      price: ticket.price,
-      userId: ticket.userId,
-      version: ticket.version,
-    });
-
-    res.send(ticket);
+    res.send(update);
   }
 );
 
-export { router as updateTicketRouter };
+export { router as updatePostRouter };

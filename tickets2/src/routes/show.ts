@@ -1,15 +1,15 @@
-import express, { Request, Response } from "express";
-import { Ticket } from "../models/tickets";
 import { NotFoundError } from "@racoonrepublic/common";
+import express, { Request, Response } from "express";
+import { Post } from "../models/post";
 
 const router = express.Router();
 
-router.get("/api/tickets2/:id", async (req: Request, res: Response) => {
-  const ticket = await Ticket.findById(req.params.id);
-  if (!ticket) {
+router.get("/api/posts2/:id", async (req: Request, res: Response) => {
+  const post = await Post.findById(req.params.id);
+  if (!post) {
     throw new NotFoundError();
   }
-  res.send(ticket);
+  res.send(post);
 });
 
-export { router as showTicketRouter };
+export { router as showPostRouter };

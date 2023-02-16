@@ -1,25 +1,27 @@
+import { Post } from "../../models/post";
 import request from "supertest";
-import {app} from '../../app';
+import { app } from "../../app";
+import mongoose from "mongoose";
 
+const buildPost = async () => {
+  const post = Post.build({
+    userId: new mongoose.Types.ObjectId().toHexString(),
+    type: ["fashion"],
+    title: "food",
+    detail: "this is the first post",
+    date: new Date(),
+  });
 
+  await post.save();
 
-const createTicket = ()=>{
-    return request(app)
-        .post('/api/tickets')
-        .set('Cookie',global.signin())
-        .send({
-            title: 'asdfasdf',
-            price: 20
-        });
-}
+  return post;
+};
 
-it('can fetch a list of tickets', async ()=>{
-    await createTicket();
-    await createTicket();
-    await createTicket();
+it("fetches posts", async () => {
+  const postOne = await buildPost();
+  const postTwo = await buildPost();
 
-    const response = await request(app).get('/api/tickets').send().expect(200);
+  const post = await request(app).get("/api/posts").expect(200);
 
-    expect(response.body.length).toEqual(3);
-
-})
+  expect(post.body.length).toEqual(2);
+});

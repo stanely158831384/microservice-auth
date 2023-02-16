@@ -1,14 +1,19 @@
 import express, { Request, Response } from "express";
-import { Ticket } from "../models/tickets";
+import { Post } from "../models/post";
+import { validateRequest, BadRequestError } from "@racoonrepublic/common";
 
 const router = express.Router();
 
-router.get("/api/tickets2", async (req: Request, res: Response) => {
-  const tickets = await Ticket.find({
-    orderId: undefined,
+router.get("/api/posts2", async (req: Request, res: Response) => {
+  console.log("in the /api/posts");
+  const post = await Post.find({
+    _id: undefined,
   });
-
-  res.send(tickets);
+  if (!post) {
+    console.log("post", post);
+    throw new BadRequestError("post find error");
+  }
+  res.status(200).send(post);
 });
 
-export { router as indexTicketRouter };
+export { router as indexPostRouter };

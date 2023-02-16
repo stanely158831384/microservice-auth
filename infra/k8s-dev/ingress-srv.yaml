@@ -52,7 +52,7 @@ spec:
                 name: posts-srv
                 port:
                   number: 3000
-          - path: /api/tickets2/?(.*)
+          - path: /api/posts2/?(.*)
             pathType: Prefix
             backend:
               service:
