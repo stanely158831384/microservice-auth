@@ -7,7 +7,7 @@ import { natsWrapper } from "../nats-wrapper";
 const router = express.Router();
 
 router.post(
-  "/api/comments",
+  "/comments2",
   requireAuth,
   [
     body("comment").not().isEmpty().withMessage("Comment is required"),
