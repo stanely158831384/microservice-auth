@@ -11,7 +11,7 @@ import { natsWrapper } from "../nats-wrapper";
 const router = express.Router();
 
 router.delete(
-  "/comments2/:id",
+  "/api/comments/:id",
   requireAuth,
   async (req: Request, res: Response) => {
     const CommentItem = await Comment.findById(req.params.id);
