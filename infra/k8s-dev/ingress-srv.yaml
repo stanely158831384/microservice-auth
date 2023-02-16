@@ -59,7 +59,7 @@ spec:
                 name: posts2-srv
                 port:
                   number: 3000
-          - path: /api/comments2/?(.*)
+          - path: /comments2/?(.*)
             pathType: Prefix
             backend:
               service:
