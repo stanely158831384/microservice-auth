@@ -89,3 +89,11 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
+    - image: stanley158831384/tickets3
+      context: tickets3
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
