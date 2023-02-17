@@ -1,99 +1,117 @@
-import request from 'supertest';
-import {app} from '../../app';
-import { Ticket } from '../../models/tickets'
-import { natsWrapper }from '../../nats-wrapper';
+import mongoose from "mongoose";
+import request from "supertest";
+import { app } from "../../app";
+import { Comment } from "../../models/comment";
+import { natsWrapper } from "../../nats-wrapper";
 
+it("has a route handler listenning to /api/comments for post request", async () => {
+  const response = await request(app).post("/api/comments").send({});
+  expect(response.status).not.toEqual(404);
+});
 
-it('has a route handler listening to /api/tickets for post requests', async ()=>{
-    const response = await request(app)
-        .post('/api/tickets')
-        .send({});
-    expect(response.status).not.toEqual(404);
-})
-it('can only be accessed if the user is signed in', async ()=>{
-    await request(app)
-        .post('/api/tickets')
-        .send({})
-        .expect(401);
-})
+it("can only be accessed if the user is signed in", async () => {
+  await request(app).post("/api/comments").send({}).expect(401);
+});
 
-it('return a status other than 401 if the user is signed in', async ()=>{
-    const response = await request(app).post('/api/tickets')
-    .set('Cookie', global.signin())
+it("return a status other than 401 if the user is signed in", async () => {
+  const response = await request(app)
+    .post("/api/comments")
+    .set("Cookie", global.signin())
     .send({});
 
-    expect(response.status).not.toEqual(401);
-})
-it('returns an error if an invalid thtle is provided', async ()=>{
-    await request(app)
-        .post('/api/tickets')
-        .set('Cookie', global.signin())
-        .send({
-            title: '',
-            price: 10
-        })
-        .expect(400);
-
-        await request(app)
-        .post('/api/tickets')
-        .set('Cookie', global.signin())
-        .send({
-            price: 10.
-        })
-        .expect(400);
+  expect(response.status).not.toEqual(401);
 });
-it('returns an error if an invalid price is provided', async ()=>{
-    await request(app)
-        .post('/api/tickets')
-        .set('Cookie', global.signin())
-        .send({
-            title: 'asdfdsaf',
-            price: - 10
-        })
-        .expect(400);
 
-    await request(app)
-        .post('/api/tickets')
-        .set('Cookie', global.signin())
-        .send({
-            title: '',
-            price: 10
-        })
-        .expect(400);
-})
-it('creates a ticket with valid inputs', async ()=>{
+it("returns an error if an invalid comment is provided", async () => {
+  await request(app)
+    .post("/api/comments")
+    .set("Cookie", global.signin())
+    .send({
+      comment: "",
+      postId: new mongoose.Types.ObjectId().toHexString(),
+      seq: 1,
+    })
+    .expect(400);
 
-    //add in a check to make sure a ticket was saved 
+  await request(app)
+    .post("/api/comments")
+    .set("Cookie", global.signin())
+    .send({
+      postId: new mongoose.Types.ObjectId().toHexString(),
+    })
+    .expect(400);
+});
 
-    let tickets = await Ticket.find({});
-    expect(tickets.length).toEqual(0);
-    const title = 'asdfdsaf';
-    await request(app)
-        .post('/api/tickets')
-        .set('Cookie', global.signin())
-        .send({
-            title,
-            price: 20
-        })
-        .expect(201);
+it("returns an error if an invalid postId is provided", async () => {
+  await request(app)
+    .post("/api/comments")
+    .set("Cookie", global.signin())
+    .send({
+      comment: "fasdfsd",
+      postId: "",
+    })
+    .expect(400);
 
-    tickets = await Ticket.find({});
+  await request(app)
+    .post("/api/comments")
+    .set("Cookie", global.signin())
+    .send({
+      comment: "fasdfsd",
+    })
+    .expect(400);
 
-    expect(tickets.length).toEqual(1);
-})
+  const comment = await request(app)
+    .post("/api/comments")
+    .set("Cookie", global.signin())
+    .send({
+      comment: "fasdfsd",
+      postId: "1234",
+      seq: 1,
+    })
+    .expect(201);
 
+  const sum = await request(app)
+    .get("/api/comments/asdfasdf")
+    .send()
+    .expect(200);
 
-it('publishes an event', async ()=>{
-    const title = 'asdfasd';
+  expect(sum.body.length).toEqual(0);
+});
 
-    await request(app)
-        .post('/api/tickets')
-        .set('Cookie',global.signin())
-        .send({
-            title,
-            price: 20,
-        })
-        .expect(201);
+it("creates a comment with valid inputs", async () => {
+  let commentItem = await Comment.find({});
+  expect(commentItem.length).toEqual(0);
+  const comment = "test comment";
+  const postId = new mongoose.Types.ObjectId().toHexString();
 
-    expect(natsWrapper.client.publish).toHaveBeenCalled();
-})
+  await request(app)
+    .post("/api/comments")
+    .set("Cookie", global.signin())
+    .send({
+      comment,
+      postId,
+      seq: 1,
+    })
+    .expect(201);
+
+  commentItem = await Comment.find({});
+
+  expect(commentItem.length).toEqual(1);
+});
+
+it("publishes an event", async () => {
+  const comment = "test comment";
+  const postId = new mongoose.Types.ObjectId().toHexString();
+
+  await request(app)
+    .post("/api/comments")
+    .set("Cookie", global.signin())
+    .send({
+      comment,
+      postId,
+      seq: 1,
+    })
+    .expect(201);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
+});

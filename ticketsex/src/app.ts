@@ -7,15 +7,13 @@ import {
   NotFoundError,
   currentUser,
 } from "@racoonrepublic/common";
-import { createTicketRouter } from "./routes/new";
-import { showTicketRouter } from "./routes/show";
-import { indexTicketRouter } from "./routes/index";
-import { updateTicketRouter } from "./routes/update";
-console.log("tickets app.ts");
-const app = express();
-let secure: boolean = process.env.NODE_ENV === "development";
+import { createCommentRouter } from "./routes/new";
+import { indexCommentRouter } from "./routes/index";
+import { deleteCommentRouter } from "./routes/delete";
+import { showCommentRouter } from "./routes/show";
 
-//this command is about the cookie-session
+const app = express();
+
 app.set("trust proxy", true);
 app.use(json());
 app.use(
@@ -25,12 +23,13 @@ app.use(
     secure: false,
   })
 );
+
 app.use(currentUser);
 
-app.use(createTicketRouter);
-app.use(showTicketRouter);
-app.use(indexTicketRouter);
-app.use(updateTicketRouter);
+app.use(createCommentRouter);
+app.use(indexCommentRouter);
+app.use(deleteCommentRouter);
+app.use(showCommentRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
