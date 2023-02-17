@@ -1,10 +1,11 @@
 import { app } from "./app";
-import { natsWrapper } from "./nats-wrapper";
 import mongoose from "mongoose";
-import { PostCancelledListener } from "./events/listeners/post-cancelled-listener";
+import { natsWrapper } from "./nats-wrapper";
+import { OrderCreatedListener } from "./events/listeners/order-created-listener";
+import { OrderCancelledListener } from "./events/listeners/order-cancelled-listener";
 
 const start = async () => {
-  console.log("Starting ....");
+  console.log("Starting...");
   console.log("mode: ", process.env.NODE_ENV);
   if (!process.env.JWT_KEY) {
     throw new Error("JWT_KEY must be defined");
@@ -27,6 +28,7 @@ const start = async () => {
   }
 
   try {
+    //first parameter will be the last parameter in the nats-depl.yaml
     await natsWrapper.connect(
       process.env.NATS_CLUSTER_ID,
       process.env.NATS_CLIENT_ID,
@@ -39,14 +41,16 @@ const start = async () => {
     process.on("SIGINT", () => natsWrapper.client.close());
     process.on("SIGTERM", () => natsWrapper.client.close());
 
-    new PostCancelledListener(natsWrapper.client).listen();
+    new OrderCreatedListener(natsWrapper.client).listen();
+    new OrderCancelledListener(natsWrapper.client).listen();
+
     await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to MongoDb");
   } catch (err) {
     console.error(err);
   }
   app.listen(3000, () => {
-    console.log("Listening on port 3000!!!!!!");
+    console.log("Listening on port 3000!!!!!!!!");
   });
 };
 

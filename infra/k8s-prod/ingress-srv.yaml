@@ -66,11 +66,11 @@ spec:
                 name: comments2-srv
                 port:
                   number: 3000
-          - path: /api/tickets3/?(.*)
+          - path: /api/ticketsex/?(.*)
             pathType: Prefix
             backend:
               service:
-                name: tickets3-srv
+                name: ticketsex-srv
                 port:
                   number: 3000
           - path: /?(.*)

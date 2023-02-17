@@ -1,25 +1,25 @@
-name: deploy-comments2
+name: deploy-ticketsex
 
 on:
   push:
     branches:
       - develop-dev
     paths:
-      - "comments2/**"
+      - "ticketsex/**"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd comments2 && docker build -t stanley158831384/comments2 .
+      - run: cd ticketsex && docker build -t stanley158831384/ticketsex .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker push stanley158831384/comments2
+      - run: docker push stanley158831384/ticketsex
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN}}
       - run: doctl kubernetes cluster kubeconfig save racoonrepublic
-      - run: kubectl rollout restart deployment comments2-depl
+      - run: kubectl rollout restart deployment ticketsex-depl
