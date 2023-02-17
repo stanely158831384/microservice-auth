@@ -1,11 +1,10 @@
-
 name: deploy-manifests
 on:
   push:
     branches:
       - develop-dev
     paths:
-      - 'infra/**'
+      - "infra/**"
 
 jobs:
   build:
