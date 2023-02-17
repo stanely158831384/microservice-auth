@@ -6,15 +6,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: comments2
+      app: commentss
   template:
     metadata:
       labels:
-        app: comments2
+        app: commentss
     spec:
       containers:
-        - name: comments2
-          image: stanley158831384/comments2
+        - name: commentss
+          image: stanley158831384/commentss
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
@@ -25,22 +25,23 @@ spec:
             - name: NATS_CLUSTER_ID
               value: ticketing
             - name: MONGO_URI
-              value: "mongodb://comments2-mongo-srv:27017/comments2"
+              value: "mongodb://commentss-mongo-srv:27017/commentss"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: comments2-srv
+  name: commentss-srv
 spec:
   selector:
-    app: comments2
+    app: commentss
   ports:
-    - name: comments2
+    - name: commentss
       protocol: TCP
       port: 3000
       targetPort: 3000
