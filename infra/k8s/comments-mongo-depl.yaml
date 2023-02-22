@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comments-mongo
+  template:
+    metadata:
+      labels:
+        app: comments-mongo
+    spec:
+      # volumes:
+      #   - name: comments-mongodb-storage
+      #     persistentVolumeClaim:
+      #       claimName: database-persistent-volume-claim-mongodb-comments
+      containers:
+        - name: comments-mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+          # volumeMounts:
+          #   - name: comments-mongodb-storage
+          #     mountPath: /data/db
+          #     subPath: mongodb
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-mongo-srv
+spec:
+  selector:
+    app: comments-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
